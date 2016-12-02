@@ -1,8 +1,10 @@
 const gulp = require('gulp');
 const babel = require('gulp-babel');
+const plumber = require('gulp-plumber'); //防止gulp退出进程
 
 gulp.task('es6to5', () => {
     return gulp.src('src/**/*.js')
+        .pipe(plumber())
         .pipe(babel({
             presets: ['es2015']
         }))
@@ -12,7 +14,7 @@ gulp.task('es6to5', () => {
 gulp.task('wathjs', function() {
     gulp.watch('src/**/*.js', ['es6to5'])
 });
-gulp.task('default', ['browser-sync', 'wathjs']);
+gulp.task('default', ['wathjs', 'browser-sync']);
 
 
 /*实时监测 浏览器实时变化*/
