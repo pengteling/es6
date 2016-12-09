@@ -28,33 +28,26 @@
 // s.delete(1);
 // console.log(s);
 // console.log(s.has(5));
+// const queuedObservers = new Set();
 
-// var queuedObservers = new Set();
-
-// var observe = function observe(fn) {
-//   return queuedObservers.add(fn);
-// };
-// var observable = function observable(obj) {
-//   return new Proxy(obj, { set: set });
-// };
+// const observe = fn => queuedObservers.add(fn);
+// const observable = obj => new Proxy(obj, {set});
 
 // function set(target, key, value, receiver) {
-//   var result = Reflect.set(target, key, value, receiver);
-//   queuedObservers.forEach(function (observer) {
-//     return observer();
-//   });
+//   const result = Reflect.set(target, key, value, receiver);
+//   queuedObservers.forEach(observer => observer());
 //   return result;
 // }
-// var person = observable({
+// const person = observable({
 //   name: '张三',
 //   age: 20
 // });
 
 // function print() {
-//   console.log(person.name + ', ' + person.age);
+//   console.log(`${person.name}, ${person.age}`)
 // }
-// function sb() {
-//   console.log('' + person.prototype);
+// function sb(){
+// 	console.log(`${person.prototype }`);
 // }
 
 // observe(print);
@@ -62,5 +55,26 @@
 // person.name = '李四';
 // person.name = 'ptl';
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-let myMap = new Map().set(true, 7).set({foo: 3}, ['abc']);
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var person = function () {
+	function person() {
+		_classCallCheck(this, person);
+	}
+
+	_createClass(person, [{
+		key: "fn",
+		value: function fn(n) {
+			console.log(n + this.name + this.age);
+		}
+	}]);
+
+	return person;
+}();
+
+var p1 = new person();
+p1.name = "ptl";
+p1.age = 23;
+p1.fn("test");
