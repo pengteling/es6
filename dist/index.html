@@ -3,10 +3,25 @@
 <head>
 	<meta charset="UTF-8">
 	<title>es6</title>
-	<script src="js/index.js"></script>
+	<script src="js/bundle.js"></script>
+ <style>
+    .active {
+        border: #f00 1px solid;
+    }
+    
+    #tab div {
+        display: none;
+    }
+    </style>
 </head>
+
 <body>
-test
-	
+    <div id="tab">
+        <button class="active">aaaa</button>
+        <button>bbbb</button>
+        <button>cccc</button>
+        <div style="display: block">111111</div>
+        <div>22222</div>
+        <div>333333</div>
+    </div>
 </body>
-</html>

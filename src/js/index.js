@@ -1,67 +1,65 @@
 'use strict';
 
-// var user ={
-// 	full_name:function(){
-// 		return this.fname+' '+this.lname;
-// 	}
-// };
-// user.fname="Bob";
-// user.lname="Wood";
-// //var full_name=user.fname+' '+user.lname;
-// console.log(user.full_name());
+// import Tab from "./tab"
 
-// var user=new Proxy({fname:"ptl"},{
-// 	get:function(obj,prop){
-// 		if(prop=='full_name'){
-// 			return obj.fname+" "+obj.lname;
-// 		}
-// 	}
+// window.onload =function(){
+// 	new Tab("tab");
+// }
+
+// var p1 = new Promise(function(resolve,reject){
+
 // })
-// //user.fname="Bob";
-// user.lname="Wood";
-// console.log(user.full_name);
+// Promise.reject("wrong").then(function(){},function(res){
+// 	console.log(res);
+// })
 
-// var arr =[1,2,3,4];
-// var s = new Set([1,2,3,3]);
+// Promise.resolve(2).then(function(val){
+// 	console.log(val);
+// })
+/*import "babel-polyfill"; //
 
-// s.add(4);
-// s.delete(1);
-// console.log(s);
-// console.log(s.has(5));
-// const queuedObservers = new Set();
-
-// const observe = fn => queuedObservers.add(fn);
-// const observable = obj => new Proxy(obj, {set});
-
-// function set(target, key, value, receiver) {
-//   const result = Reflect.set(target, key, value, receiver);
-//   queuedObservers.forEach(observer => observer());
-//   return result;
-// }
-// const person = observable({
-//   name: '张三',
-//   age: 20
-// });
-
-// function print() {
-//   console.log(`${person.name}, ${person.age}`)
-// }
-// function sb(){
-// 	console.log(`${person.prototype }`);
-// }
-
-// observe(print);
-// observe(sb);
-// person.name = '李四';
-// person.name = 'ptl';
-
-class person{	
-	fn(n){
-		console.log(n+this.name+this.age);
-	}
+function* show(){
+	yield console.log('hello');
+	yield console.log('world');	
+}
+var res =show();
+res.next();
+res.next();*/
+/*import "babel-polyfill"; 
+var fibonacci = {
+  [Symbol.iterator]: function*() {
+    var pre = 0, cur = 1;
+    for (;;) {
+      var temp = pre;
+      pre = cur;
+      cur += temp;
+      yield cur;
+    }
+  }
 }
 
-let p1 =new person();
-p1.name="ptl";
-p1.age=23;
-p1.fn("test");
+for (var n of fibonacci) {
+  // truncate the sequence at 1000
+  if (n > 1000)
+    break;
+  console.log(n);
+}*/
+
+import "babel-polyfill"; 
+var sleep = function (time) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(function () {
+            //resolve();
+            reject("test");
+        }, time);
+    })
+};
+
+var start = async function () {
+    // 在这里使用起来就像同步代码那样直观
+    console.log('start');
+    await sleep(3000);
+    console.log('end');
+};
+
+start();
