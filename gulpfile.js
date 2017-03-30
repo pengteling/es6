@@ -28,7 +28,7 @@ gulp.task("browserify", function () {
 
     return b
         
-        .transform(babelify, { presets: ['es2015','stage-3'] })
+        .transform(babelify, { 'presets': ['es2015','stage-3'] , 'plugins': ['transform-runtime','transform-decorators-legacy'] })
         .bundle()
         .pipe(plumber()) 
         .pipe(source("bundle.js"))
