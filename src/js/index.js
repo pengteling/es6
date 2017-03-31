@@ -11,6 +11,7 @@ console.log(g.next());
 console.log(g.next());
 console.log(g.next());
 
+console.log("2017-3-31");
 //
 // // var myPromise = Promise.resolve('Foo');
 // // myPromise.then((res)=> console.log(res));
